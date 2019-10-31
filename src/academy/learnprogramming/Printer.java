@@ -25,9 +25,23 @@ public class Printer {
     }
 
     public void printingPages(int printedPages) {
-        if(printedPages > 0) {
-            this.pagesPrinted += printedPages;
+
+        if(this.isDuplex) {
+            if(printedPages > 0) {
+//                if(printedPages % 2 == 0) {
+//                    this.pagesPrinted += (printedPages / 2);
+//                } else {
+//                    this.pagesPrinted += (printedPages / 2) + 1;
+//                }
+                this.pagesPrinted += (printedPages / 2) + (printedPages % 2);
+                System.out.println("Printing in duplex mode");
+            }
+        } else {
+            if(printedPages > 0) {
+                this.pagesPrinted += printedPages;
+            }
         }
+
     }
 
     public int getTonerLevel() {
